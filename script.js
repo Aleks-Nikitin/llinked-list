@@ -43,24 +43,30 @@ class LinkedList{
     }
     traverse(node){
             if(this.index == this.counter) return node
-            /*if(counter == 0){
-                counter++
-                traverse(this.head())
-            } */
            this.counter = this.counter +1;
-            if(node.next == 0) return
+            if(node.next == 0) return 'DNE'
             let temp = node.next;
-            if(node.next != 0) this.traverse(this.storage[temp])
+            for (const element of Object.keys(this.storage)) {
+            if(this.storage[element].value == temp){
+                temp= element
+            }
+       }
+            if(node.next != 0) {
+                return this.traverse(this.storage[temp])
+            }
+           
             
-
+                
         }
     at(index){
-        //let size = this.size()
         this.index = index;
-        this.traverse(this.head());
+        return this.traverse(this.head());
     }
     pop(){
-
+        for (const element of Object.keys(this.storage)) {
+            if(this.storage[element] == this.tail()){
+                delete this.storage[element];
+            }}
     }
     contains(value){
           for (const element of Object.keys(this.storage)) {
@@ -69,12 +75,21 @@ class LinkedList{
        } return false
     }
     find(value){
-
+        // needs to traverse through the list to correctly show indexes
+        let counter=0
+        for (const element of Object.keys(this.storage)) {
+            if(this.storage[element].value == value){
+                return counter
+            }
+            counter++
+            
+       }
     }
     toString(){
+        /*
         let num = this.size();
         let sum = this.head().value;
-       
+       */
     }
 }
 class Node{
@@ -88,9 +103,9 @@ bob.preappend("FirstElement");
 bob.append("lastElement");
 bob.append("NewLastElement");
 bob.preappend("NewFirstElement")
-//console.log(bob.toString());
 console.log(bob.head());
 console.log(bob.tail());
-console.log(bob.at(1))
+console.log(bob.find('FirstElement'));
+console.log(bob.at(3))
 
 
