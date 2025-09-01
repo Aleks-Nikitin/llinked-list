@@ -60,7 +60,9 @@ class LinkedList{
         }
     at(index){
         this.index = index;
+        this.counter = 0;
         return this.traverse(this.head());
+        
     }
     pop(){
         for (const element of Object.keys(this.storage)) {
@@ -75,13 +77,17 @@ class LinkedList{
        } return false
     }
     find(value){
-        // needs to traverse through the list to correctly show indexes
-        let counter=0
+        let keys = Object.keys(this.storage);
+        let highestNum = Math.max(...keys);
         for (const element of Object.keys(this.storage)) {
             if(this.storage[element].value == value){
-                return counter
+                for (let i = 0; i < highestNum; i++) {
+                    if (this.storage[element] == this.at(i)) {
+                        return i
+                    }
+                    
+                }
             }
-            counter++
             
        }
     }
@@ -103,9 +109,7 @@ bob.preappend("FirstElement");
 bob.append("lastElement");
 bob.append("NewLastElement");
 bob.preappend("NewFirstElement")
-console.log(bob.head());
-console.log(bob.tail());
-console.log(bob.find('FirstElement'));
-console.log(bob.at(3))
+console.log(bob.at(4));
+console.log(bob.find("lastElement"))
 
 
