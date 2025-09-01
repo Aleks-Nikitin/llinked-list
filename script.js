@@ -92,10 +92,17 @@ class LinkedList{
        }
     }
     toString(){
-        /*
-        let num = this.size();
-        let sum = this.head().value;
-       */
+        let keys = Object.keys(this.storage);
+        let highestNum = Math.max(...keys);
+        let sum ='';
+        for(let i=0; i<highestNum; i++){
+            if(this.at(i)){
+                 sum+= `(${this.at(i).value})->`
+            }
+           
+        }
+        sum+= 'null';
+        return sum
     }
 }
 class Node{
@@ -109,7 +116,8 @@ bob.preappend("FirstElement");
 bob.append("lastElement");
 bob.append("NewLastElement");
 bob.preappend("NewFirstElement")
-console.log(bob.at(4));
-console.log(bob.find("lastElement"))
+//console.log(bob.at(4));
+//console.log(bob.find("lastElement"))
+console.log(bob.toString());
 
 
