@@ -29,7 +29,11 @@ class LinkedList{
         return this.size() + 1
     }
     head(){
-        return this.first;
+          for (const element of Object.keys(this.storage)) {
+            console.log(`${element} thats element key`);
+            if(this.storage[element].value == this.first) return this.storage[element]
+            //if(this.storage.element.value == this.first) return this.storage.element;
+       }
     }
     tail(){
        for (const element of this.storage) {
@@ -49,7 +53,9 @@ class LinkedList{
 
     }
     toString(){
-       return this.storage[this.first];
+        console.log(this.first);
+        console.log(this.storage["1"].value)
+       return this.storage;
     }
 }
 class Node{
@@ -61,3 +67,5 @@ class Node{
 let bob = new LinkedList();
 bob.preappend("Lion");
 console.log(bob.toString());
+console.log(bob.head());
+
